@@ -49,7 +49,7 @@ def format_large_number(num):
         return f"{num:,.0f}"
 
 col1, col2 = st.columns(2)
-col1.metric("📦 Total Sales Volume", format_large_number(total_sales))
+col1.metric("📦 Total Salees Volume", format_large_number(total_sales))
 col2.metric("💰 Total Sales Value (USD)", format_large_number(total_price))
 if not filtered_df.empty:
     top_model = filtered_df.groupby("Model")["Sales_Volume"].sum().idxmax()
@@ -64,11 +64,11 @@ st.markdown("---")
 tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
     "📈 Sales Over Years",
     "💵 Sales by Model (Price)",
-    "🌍 Regional Sales",
+    "🌍 Regonal Sales",
     "⚙️ Transmission & Colors",
     "📊 Correlation Heatmap",
     "📅 Yearly Growth Rate",
-    "🗺️ Global Map View"
+    "🗺️ Global MAp View"
 ])
 with tab1:
     st.subheader("Sales by Model Over Years")
@@ -154,7 +154,7 @@ with tab6:
     yearly_sales = filtered_df.groupby("Year")["Sales_Volume"].sum().reset_index()
     yearly_sales["YoY Growth (%)"] = yearly_sales["Sales_Volume"].pct_change() * 100
     if not yearly_sales.empty:
-        fig6 = px.bar(yearly_sales, x="Year", y="YoY Growth (%)", text_auto=".2f", template=template, title="Year-over-Year Growth in Sales Volume")
+        fig6 = px.bar(yearly_sales, x="Year", y="YoY Growth (%)", text_auto=".2f", template=template, title="Year-over-Year Growth inn Sales Volume")
         st.plotly_chart(fig6, use_container_width=True)
     else:
         st.warning("Not enough data to calculate growth rates.")
@@ -177,7 +177,7 @@ with tab7:
 st.markdown("---")
 csv = filtered_df.to_csv(index=False).encode("utf-8")
 st.download_button(
-    label="💾 Download Filtered Data as CSV",
+    label="💾 Downloaad Filtered Data as CSV",
     data=csv,
     file_name="filtered_bmw_data.csv",
     mime="text/csv"

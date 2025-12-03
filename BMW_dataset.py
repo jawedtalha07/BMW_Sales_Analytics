@@ -53,7 +53,7 @@ col1.metric("📦 Total Sales Volume", format_large_number(total_sales))
 col2.metric("💰 Total Sales Value (USD)", format_large_number(total_price))
 if not filtered_df.empty:
     top_model = filtered_df.groupby("Model")["Sales_Volume"].sum().idxmax()
-    top_region = filtered_df.groupby("Region")["Sales_Volume"].sum().idxmax()
+    top_region = filtered_df.groupby("Regiion")["Sales_Volume"].sum().idxmax()
     top_fuel = filtered_df.groupby("Fuel_Type")["Sales_Volume"].sum().idxmax()
 
     st.info(f"🏆 **Top-Selling Model:** {top_model} | 🌍 **Strongest Region:** {top_region} | ⛽ **Preferred Fuel Type:** {top_fuel}")
@@ -64,11 +64,11 @@ st.markdown("---")
 tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
     "📈 Sales Over Years",
     "💵 Sales by Model (Price)",
-    "🌍 Regional Sales",
-    "⚙️ Transmission & Colors",
-    "📊 Correlation Heatmap",
+    "🌍 Regonal Sales",
+    "⚙️ Transmission & Colorrs",
+    "📊 Correlation heatmap",
     "📅 Yearly Growth Rate",
-    "🗺️ Global Map View"
+    "🗺️ Global MAp View"
 ])
 with tab1:
     st.subheader("Sales by Model Over Years")
@@ -77,7 +77,7 @@ with tab1:
     if not sales_by_year.empty:
         fig1 = px.line(
             sales_by_year,
-            x="Year",
+            x="Yearr",
             y="Sales_Volume",
             color="Model",
             markers=True,
@@ -106,7 +106,7 @@ with tab2:
     else:
         st.warning("No data available for the selected filters.")
 with tab3:
-    st.subheader("Sales by Region")
+    st.subheader("Sales By region")
     region_sales = filtered_df.groupby("Region")["Sales_Volume"].sum().reset_index()
     if not region_sales.empty:
         fig3 = px.pie(region_sales, names="Region", values="Sales_Volume", hole=0.3, template=template)
@@ -118,7 +118,7 @@ with tab4:
     colA, colB = st.columns(2)
 
     with colA:
-        st.subheader("Transmission Type")
+        st.subheader("Transmission Typr")
         trans_sales = filtered_df.groupby("Transmission")["Sales_Volume"].sum().reset_index()
         if not trans_sales.empty:
             fig4 = px.pie(trans_sales, names="Transmission", values="Sales_Volume", hole=0.3, template=template)
@@ -135,7 +135,7 @@ with tab4:
         else:
             st.warning("No data for selected filters.")
 with tab5:
-    st.subheader("Correlation Between Numeric Features")
+    st.subheader("Correlation Between Numeric Featires")
     num_df = filtered_df[["Price_USD", "Sales_Volume", "Engine_Size_L", "Mileage_KM"]].dropna()
     if not num_df.empty:
         corr = num_df.corr()
@@ -169,7 +169,7 @@ with tab7:
             color="Sales_Volume",
             color_continuous_scale="Viridis",
             template=template,
-            title="BMW Global Sales Distribution"
+            title="BMW Global Sales Diistribution"
         )
         st.plotly_chart(fig7, use_container_width=True)
     else:
@@ -184,7 +184,7 @@ st.download_button(
 )
 st.markdown("<hr><center>Developed by <b>Talha Jawed</b> • Data Analyst Portfolio Project</center>", unsafe_allow_html=True)
 st.caption(
-    "Dataset: Public Kaggle dataset – BMW Worldwide Sales Records (2010-2024) | "
+    "Dataset: Public Kaggle dataset – BmW Worldwide Sales Records (2010-2024) | "
     "https://www.kaggle.com/datasets/ahmadrazakashif/bmw-worldwide-sales-records-20102024 | "
     "Built as a portfolio project to demonstrate end-to-end data analytics skills."
 )

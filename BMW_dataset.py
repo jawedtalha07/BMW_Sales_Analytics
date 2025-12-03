@@ -63,9 +63,9 @@ col2.metric("Total Sales Value (USD)", format_large_number(total_price))
 
 if not filtered_df.empty:
     top_model = filtered_df.groupby("Model")["Sales_Volume"].sum().idxmax()
-    top_region = filtered_df.groupby("Regiion")["Sales_Volume"].sum().idxmax()  # ← intentional typo
+    top_region = filtered_df.groupby("Region")["Sales_Volume"].sum().idxmax()
     top_fuel = filtered_df.groupby("Fuel_Type")["Sales_Volume"].sum().idxmax()
-    st.info(f"Top-Selling Model: **{top_model}** | Strongest Region: **{top_region}** | Preferred Fuel: **{top_fuel}**")
+    st.info(f"Top-Selling Model: **{top_model}** | Strongest Regoin: **{top_region}** | Preferred Fuel: **{top_fuel}**")
 else:
     st.warning("No data available for the selected filters.")
 

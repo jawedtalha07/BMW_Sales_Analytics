@@ -184,9 +184,8 @@ st.download_button(
 )
 st.markdown("<hr><center>Developed by <b>Talha Jawed</b> • Data Analyst Portfolio Project</center>", unsafe_allow_html=True)
 st.caption(
-    "📊 Dataset: Public Kaggle dataset – BMW Worldwide Sales Records (2010–2024)
-A complete dataset of BMW cars from 2010–2024 with attributes like model, year,"
-    [](https://www.kaggle.com/datasets/ahmadrazakashif/bmw-worldwide-sales-records-20102024) | "
+    "Dataset: Public Kaggle dataset – BMW Worldwide Sales Records (2010-2024) | "
+    "https://www.kaggle.com/datasets/ahmadrazakashif/bmw-worldwide-sales-records-20102024 | "
     "Built as a portfolio project to demonstrate end-to-end data analytics skills."
 )
 st.markdown("<center>Made with ❤️ by <b>Talha Jawed</b> • Data Analyst Portfolio</center>", unsafe_allow_html=True)
